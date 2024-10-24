@@ -1,0 +1,116 @@
+{
+	"name": "eventos-f3",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "qntZombies",
+			"type": "number",
+			"initialValue": "5",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 917435577408734
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "eventos-base"
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "zombies"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 582388213531955
+				}
+			],
+			"actions": [
+				{
+					"id": "reset-eventvar",
+					"objectClass": "System",
+					"sid": 414292337387828,
+					"parameters": {
+						"variable": "qntZombies"
+					}
+				}
+			],
+			"sid": 809016167757204
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 867629679466183,
+					"parameters": {
+						"variable": "qntZombies",
+						"comparison": 4,
+						"value": "0"
+					}
+				},
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 880859924552933,
+					"parameters": {
+						"interval-seconds": "random(5)"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-x",
+					"objectClass": "zombieBerçario",
+					"sid": 492592990162308,
+					"parameters": {
+						"x": "random(LayoutWidth)"
+					}
+				},
+				{
+					"id": "spawn-another-object",
+					"objectClass": "zombieBerçario",
+					"sid": 214604655997007,
+					"parameters": {
+						"object": "zombie",
+						"layer": "9",
+						"image-point": "0",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-height",
+					"objectClass": "zombie",
+					"sid": 931955927992751,
+					"parameters": {
+						"height": "44"
+					}
+				},
+				{
+					"id": "set-width",
+					"objectClass": "zombie",
+					"sid": 193957694706786,
+					"parameters": {
+						"width": "36"
+					}
+				},
+				{
+					"id": "subtract-from-eventvar",
+					"objectClass": "System",
+					"sid": 350560758930778,
+					"parameters": {
+						"variable": "qntZombies",
+						"value": "1"
+					}
+				}
+			],
+			"sid": 636779623803479
+		}
+	],
+	"sid": 454443525136416
+}

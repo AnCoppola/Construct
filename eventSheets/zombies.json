@@ -1,0 +1,297 @@
+{
+	"name": "zombies",
+	"events": [
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-two-values",
+					"objectClass": "System",
+					"sid": 961428485330354,
+					"parameters": {
+						"first-value": "zombie.X",
+						"comparison": 4,
+						"second-value": "Capivara.X"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-mirrored",
+					"objectClass": "zombie",
+					"sid": 866261323787025,
+					"parameters": {
+						"state": "mirrored"
+					}
+				}
+			],
+			"sid": 564543151807535
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "else",
+					"objectClass": "System",
+					"sid": 930291347521829
+				}
+			],
+			"actions": [
+				{
+					"id": "set-mirrored",
+					"objectClass": "zombie",
+					"sid": 377811933308856,
+					"parameters": {
+						"state": "not-mirrored"
+					}
+				}
+			],
+			"sid": 802069807328485
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-overlapping-another-object",
+					"objectClass": "zombie",
+					"sid": 244428447290030,
+					"parameters": {
+						"object": "Capivara"
+					}
+				},
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 171446280386631,
+					"parameters": {
+						"variable": "Vivo"
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "atualiza_energia",
+					"sid": 518682638198408,
+					"parameters": [
+						"-5"
+					]
+				},
+				{
+					"id": "shake",
+					"objectClass": "Capivara",
+					"sid": 500928245445111,
+					"behaviorType": "CentrarEm",
+					"parameters": {
+						"magnitude": "10",
+						"duration": "0.4",
+						"mode": "reducing-magnitude"
+					}
+				}
+			],
+			"sid": 198493033788794
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "for-each",
+					"objectClass": "System",
+					"sid": 870736308044683,
+					"parameters": {
+						"object": "zombie"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 977630587787375,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 688802197523323,
+							"parameters": {
+								"first-value": "zombie.X",
+								"comparison": 2,
+								"second-value": "Capivara.X"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "simulate-control",
+							"objectClass": "zombie",
+							"sid": 785166073134224,
+							"behaviorType": "Plataforma",
+							"parameters": {
+								"control": "right"
+							}
+						},
+						{
+							"id": "set-mirrored",
+							"objectClass": "zombie",
+							"sid": 441867214759260,
+							"parameters": {
+								"state": "not-mirrored"
+							}
+						}
+					],
+					"sid": 414695723400340
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 189788150351163
+						}
+					],
+					"actions": [
+						{
+							"id": "simulate-control",
+							"objectClass": "zombie",
+							"sid": 851820786954411,
+							"behaviorType": "Plataforma",
+							"parameters": {
+								"control": "left"
+							}
+						},
+						{
+							"id": "set-mirrored",
+							"objectClass": "zombie",
+							"sid": 130975739307340,
+							"parameters": {
+								"state": "mirrored"
+							}
+						}
+					],
+					"sid": 712865225903858
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-overlapping-at-offset",
+					"objectClass": "zombie",
+					"sid": 975487235050017,
+					"parameters": {
+						"object": "base_solido",
+						"offset-x": "-16",
+						"offset-y": "1"
+					},
+					"isInverted": true
+				},
+				{
+					"id": "is-mirrored",
+					"objectClass": "zombie",
+					"sid": 802159279642605
+				}
+			],
+			"actions": [
+				{
+					"id": "simulate-control",
+					"objectClass": "zombie",
+					"sid": 455535004838226,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"control": "jump"
+					}
+				}
+			],
+			"sid": 798849815347228
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-mirrored",
+					"objectClass": "zombie",
+					"sid": 724622222627256,
+					"isInverted": true
+				},
+				{
+					"id": "is-overlapping-at-offset",
+					"objectClass": "zombie",
+					"sid": 622216503800406,
+					"parameters": {
+						"object": "base_solido",
+						"offset-x": "16",
+						"offset-y": "1"
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"id": "simulate-control",
+					"objectClass": "zombie",
+					"sid": 750067757764432,
+					"behaviorType": "Plataforma",
+					"parameters": {
+						"control": "jump"
+					}
+				}
+			],
+			"sid": 390169617098052
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-collision-with-another-object",
+					"objectClass": "zombie",
+					"sid": 855572489428121,
+					"parameters": {
+						"object": "Shuriken"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "destroy",
+					"objectClass": "Shuriken",
+					"sid": 999858656546310
+				},
+				{
+					"id": "set-default-color",
+					"objectClass": "zombie",
+					"sid": 911150689230084,
+					"parameters": {
+						"color": "rgbEx(0, 0, 0)"
+					}
+				},
+				{
+					"id": "flash",
+					"objectClass": "zombie",
+					"sid": 666702021800552,
+					"behaviorType": "Piscar",
+					"parameters": {
+						"on-time": "0.1",
+						"off-time": "0.05",
+						"duration": "1.0"
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 724466841192397,
+					"parameters": {
+						"seconds": ".2"
+					}
+				},
+				{
+					"id": "destroy",
+					"objectClass": "zombie",
+					"sid": 185376556299862
+				}
+			],
+			"sid": 737555711103566
+		}
+	],
+	"sid": 109774733264121
+}

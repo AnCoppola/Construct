@@ -1,0 +1,51 @@
+{
+	"name": "FundoPinheiros",
+	"plugin-id": "Sprite",
+	"sid": 645958306215618,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 1802,
+						"height": 895,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 8839555,
+						"collisionPoly": {
+							"points": [
+								0.0005549389567147614,
+								0.0011173184357541898,
+								0.9994450610432852,
+								0.0011173184357541898,
+								0.9994450610432852,
+								0.9988826815642458,
+								0.0005549389567147614,
+								0.9988826815642458
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 646762602925783,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

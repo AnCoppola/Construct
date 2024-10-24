@@ -1,0 +1,33 @@
+{
+	"name": "base_solido",
+	"plugin-id": "TiledBg",
+	"sid": 822741754106705,
+	"isGlobal": false,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "solid",
+			"name": "Sólido",
+			"sid": 977866531543102
+		},
+		{
+			"behaviorId": "Physics",
+			"name": "Física",
+			"sid": 289067934055915
+		}
+	],
+	"effectTypes": [],
+	"image": {
+		"width": 250,
+		"height": 250,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "lossless",
+		"exportQuality": 0.8,
+		"fileType": "image/png",
+		"imageSpriteId": 9616063,
+		"useCollisionPoly": true,
+		"tag": ""
+	}
+}

@@ -1,0 +1,88 @@
+{
+	"name": "jacares",
+	"events": [
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Jacarés",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "Capivara",
+							"sid": 747452386589125,
+							"parameters": {
+								"object": "Jacare"
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "Morte",
+							"sid": 848074634166090
+						}
+					],
+					"sid": 392724068305066
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 480090028360383,
+							"parameters": {
+								"first-value": "Jacare.Senóide.CyclePosition",
+								"comparison": 4,
+								"second-value": ".5"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-mirrored",
+							"objectClass": "Jacare",
+							"sid": 333010731664423,
+							"parameters": {
+								"state": "mirrored"
+							}
+						}
+					],
+					"sid": 627284442033063
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 166509830734921,
+							"parameters": {
+								"first-value": "Jacare.Senóide.CyclePosition",
+								"comparison": 2,
+								"second-value": ".5"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-mirrored",
+							"objectClass": "Jacare",
+							"sid": 415088221044603,
+							"parameters": {
+								"state": "not-mirrored"
+							}
+						}
+					],
+					"sid": 123283986583993
+				}
+			],
+			"sid": 735763245813524
+		}
+	],
+	"sid": 357596985937115
+}

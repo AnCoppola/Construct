@@ -1,0 +1,42 @@
+{
+	"name": "eventos-f1",
+	"events": [
+		{
+			"eventType": "include",
+			"includeSheet": "eventos-base"
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "jacares"
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "serras"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "is-overlapping-another-object",
+					"objectClass": "Capivara",
+					"sid": 765533209130825,
+					"parameters": {
+						"object": "Portal"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "go-to-layout",
+					"objectClass": "System",
+					"sid": 515839209045839,
+					"parameters": {
+						"layout": "fase2"
+					}
+				}
+			],
+			"sid": 752458862412443
+		}
+	],
+	"sid": 839630808750162
+}

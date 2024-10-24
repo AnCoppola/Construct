@@ -1,0 +1,1245 @@
+{
+	"name": "eventos-base",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "Vidas",
+			"type": "number",
+			"initialValue": "3",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 581041450105321
+		},
+		{
+			"eventType": "variable",
+			"name": "Vivo",
+			"type": "boolean",
+			"initialValue": "true",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 183645980304126
+		},
+		{
+			"eventType": "variable",
+			"name": "Energia",
+			"type": "number",
+			"initialValue": "450",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 307209073299181
+		},
+		{
+			"eventType": "variable",
+			"name": "Capivara_anima",
+			"type": "string",
+			"initialValue": "parado",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 311870652494334
+		},
+		{
+			"eventType": "variable",
+			"name": "Shurikens",
+			"type": "number",
+			"initialValue": "10",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 644909170091685
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 719976544347380
+				}
+			],
+			"actions": [
+				{
+					"type": "script",
+					"script": "globalThis.myShurikens = new Shurikens(runtime);\nmyShurikens.Mostra();"
+				}
+			],
+			"sid": 103729668294815
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Controles",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Teclado",
+							"sid": 742207709425594,
+							"parameters": {
+								"key": 39
+							}
+						},
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 354668832853543,
+							"parameters": {
+								"variable": "Vivo"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-mirrored",
+							"objectClass": "Capivara",
+							"sid": 461078243584647,
+							"parameters": {
+								"state": "not-mirrored"
+							}
+						},
+						{
+							"id": "set-enabled",
+							"objectClass": "CAM",
+							"sid": 195088233877297,
+							"behaviorType": "CentrarEm",
+							"parameters": {
+								"state": "disabled"
+							}
+						},
+						{
+							"id": "set-enabled",
+							"objectClass": "Capivara",
+							"sid": 233473054101453,
+							"behaviorType": "CentrarEm",
+							"parameters": {
+								"state": "enabled"
+							}
+						}
+					],
+					"sid": 397714655609394
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-moving",
+							"objectClass": "Capivara",
+							"sid": 219243052873139,
+							"behaviorType": "Plataforma",
+							"isInverted": true
+						},
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 146082778699029,
+							"parameters": {
+								"variable": "Vivo"
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 974578989750344,
+							"parameters": {
+								"variable": "Capivara_anima",
+								"comparison": 1,
+								"value": "\"atacando\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 782892712883436,
+							"parameters": {
+								"variable": "Capivara_anima",
+								"value": "\"parado\""
+							}
+						}
+					],
+					"sid": 134205374424233
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-moving",
+							"objectClass": "Capivara",
+							"sid": 651924427939413,
+							"behaviorType": "Plataforma",
+							"isInverted": true
+						},
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 496118047852074,
+							"parameters": {
+								"variable": "Vivo"
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 339056818413663,
+							"parameters": {
+								"variable": "Capivara_anima",
+								"comparison": 1,
+								"value": "\"atacando\""
+							}
+						},
+						{
+							"id": "is-overlapping-at-offset",
+							"objectClass": "Capivara",
+							"sid": 835719357319167,
+							"parameters": {
+								"object": "base_solido",
+								"offset-x": "30",
+								"offset-y": "5"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "is-overlapping-at-offset",
+							"objectClass": "Capivara",
+							"sid": 400582322267028,
+							"parameters": {
+								"object": "rampa",
+								"offset-x": "0",
+								"offset-y": "2"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 499090809589107,
+							"parameters": {
+								"variable": "Capivara_anima",
+								"value": "\"caindo\""
+							}
+						}
+					],
+					"sid": 297777209101057
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-moving",
+							"objectClass": "Capivara",
+							"sid": 222486106662316,
+							"behaviorType": "Plataforma",
+							"isInverted": true
+						},
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 334886513143633,
+							"parameters": {
+								"variable": "Vivo"
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 934062039197893,
+							"parameters": {
+								"variable": "Capivara_anima",
+								"comparison": 1,
+								"value": "\"atacando\""
+							}
+						},
+						{
+							"id": "is-overlapping-at-offset",
+							"objectClass": "Capivara",
+							"sid": 380272877267745,
+							"parameters": {
+								"object": "rampa",
+								"offset-x": "0",
+								"offset-y": "2"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "is-overlapping-at-offset",
+							"objectClass": "Capivara",
+							"sid": 916695730551499,
+							"parameters": {
+								"object": "base_solido",
+								"offset-x": "-30",
+								"offset-y": "5"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 202272590607932,
+							"parameters": {
+								"variable": "Capivara_anima",
+								"value": "\"caindo\""
+							}
+						}
+					],
+					"sid": 347848158449399
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Teclado",
+							"sid": 714262431439515,
+							"parameters": {
+								"key": 38
+							}
+						},
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 789260576736184,
+							"parameters": {
+								"variable": "Vivo"
+							}
+						},
+						{
+							"id": "is-on-floor",
+							"objectClass": "Capivara",
+							"sid": 938255839303110,
+							"behaviorType": "Plataforma"
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 597003797193481,
+							"parameters": {
+								"variable": "Capivara_anima",
+								"value": "\"pulando\""
+							}
+						}
+					],
+					"sid": 848242151316038
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Teclado",
+							"sid": 417761512367277,
+							"parameters": {
+								"key": 37
+							}
+						},
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 857121675163683,
+							"parameters": {
+								"variable": "Vivo"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-mirrored",
+							"objectClass": "Capivara",
+							"sid": 832254571783347,
+							"parameters": {
+								"state": "mirrored"
+							}
+						}
+					],
+					"sid": 936067847246626
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 335100290677868,
+							"parameters": {
+								"variable": "Vivo"
+							}
+						},
+						{
+							"id": "is-moving",
+							"objectClass": "Capivara",
+							"sid": 830844289633897,
+							"behaviorType": "Plataforma"
+						},
+						{
+							"id": "is-on-floor",
+							"objectClass": "Capivara",
+							"sid": 537009162747411,
+							"behaviorType": "Plataforma"
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 513473641723944,
+							"parameters": {
+								"variable": "Capivara_anima",
+								"value": "\"correndo\""
+							}
+						}
+					],
+					"sid": 142552037111067
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Teclado",
+							"sid": 277696129922807,
+							"parameters": {
+								"key": 88
+							}
+						},
+						{
+							"id": "is-mirrored",
+							"objectClass": "Capivara",
+							"sid": 965055547826473,
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "joga_Shuriken",
+							"sid": 428715492006138,
+							"parameters": [
+								"-15"
+							]
+						}
+					],
+					"sid": 853915337830502
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-key-pressed",
+							"objectClass": "Teclado",
+							"sid": 860149023440156,
+							"parameters": {
+								"key": 88
+							}
+						},
+						{
+							"id": "is-mirrored",
+							"objectClass": "Capivara",
+							"sid": 438330607543504
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "joga_Shuriken",
+							"sid": 298516290587919,
+							"parameters": [
+								"-160"
+							]
+						}
+					],
+					"sid": 917101087483063
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-tick",
+							"objectClass": "System",
+							"sid": 989709314536500
+						},
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 793517079321512,
+							"parameters": {
+								"variable": "Vivo"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation",
+							"objectClass": "Capivara",
+							"sid": 763241038478718,
+							"parameters": {
+								"animation": "Capivara_anima",
+								"from": "beginning"
+							}
+						}
+					],
+					"sid": 657527207242970
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "Capivara",
+							"sid": 105525592830209,
+							"parameters": {
+								"object": "carga"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "destroy",
+							"objectClass": "carga",
+							"sid": 186585888313182
+						},
+						{
+							"type": "script",
+							"script": "runtime.globalVars.Shurikens = myShurikens.Add();"
+						}
+					],
+					"sid": 951137601064427
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-jumping",
+							"objectClass": "Capivara",
+							"sid": 657236194689178,
+							"behaviorType": "Plataforma"
+						}
+					],
+					"actions": [
+						{
+							"id": "set-prevent-rotation",
+							"objectClass": "Capivara",
+							"sid": 282624680237642,
+							"behaviorType": "Física",
+							"parameters": {
+								"setting": "dont-prevent-rotations"
+							}
+						}
+					],
+					"sid": 111554369918950
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 409357801190482
+						}
+					],
+					"actions": [
+						{
+							"id": "set-prevent-rotation",
+							"objectClass": "Capivara",
+							"sid": 775365331254781,
+							"behaviorType": "Física",
+							"parameters": {
+								"setting": "prevent-rotations"
+							}
+						}
+					],
+					"sid": 548158986455334
+				}
+			],
+			"sid": 398997478665908
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "HUD",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 707333053264301,
+							"parameters": {
+								"first-value": "Energia",
+								"comparison": 3,
+								"second-value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "Morte",
+							"sid": 779010768630548
+						}
+					],
+					"sid": 604838969143784
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "pick-by-comparison",
+							"objectClass": "System",
+							"sid": 653333253031483,
+							"parameters": {
+								"object": "Heart",
+								"expression": "Heart.ID",
+								"comparison": 5,
+								"value": "Vidas"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation-frame",
+							"objectClass": "Heart",
+							"sid": 742993871781891,
+							"parameters": {
+								"frame-number": "2"
+							}
+						}
+					],
+					"sid": 177059534250989
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-object-clicked",
+							"objectClass": "Mouse",
+							"sid": 624544885121323,
+							"parameters": {
+								"mouse-button": "left",
+								"click-type": "clicked",
+								"object-clicked": "btn_reiniciar"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "reset-global-variables",
+							"objectClass": "System",
+							"sid": 607031855067676,
+							"parameters": {
+								"reset-static": true
+							}
+						},
+						{
+							"id": "restart-layout",
+							"objectClass": "System",
+							"sid": 830956489937375
+						}
+					],
+					"sid": 806396393985568
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "cursor-is-over-object",
+							"objectClass": "Mouse",
+							"sid": 843684885263673,
+							"parameters": {
+								"object": "btn_reiniciar"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-cursor-style",
+							"objectClass": "Mouse",
+							"sid": 835293359316111,
+							"parameters": {
+								"cursor-style": "hand"
+							}
+						}
+					],
+					"sid": 388433211936962
+				}
+			],
+			"sid": 148542384206554
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Funções",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"functionName": "Morte",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 865322004505062,
+							"parameters": {
+								"variable": "Vivo"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "toggle-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 874987554539254,
+							"parameters": {
+								"variable": "Vivo"
+							}
+						},
+						{
+							"id": "set-ignoring-input",
+							"objectClass": "Capivara",
+							"sid": 685284366377861,
+							"behaviorType": "Plataforma",
+							"parameters": {
+								"input": "start-ignoring"
+							}
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "Capivara",
+							"sid": 364323879873100,
+							"parameters": {
+								"animation": "\"morto\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "subtract-from-eventvar",
+							"objectClass": "System",
+							"sid": 690849893174352,
+							"parameters": {
+								"variable": "Vidas",
+								"value": "1"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 926846060480257,
+							"parameters": {
+								"seconds": ".5"
+							}
+						}
+					],
+					"sid": 555564410549633,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 473363817681593,
+									"parameters": {
+										"first-value": "Vidas",
+										"comparison": 4,
+										"second-value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "destroy",
+									"objectClass": "Capivara",
+									"sid": 126156535309735
+								},
+								{
+									"id": "set-ignoring-input",
+									"objectClass": "Capivara",
+									"sid": 847878241902661,
+									"behaviorType": "Plataforma",
+									"parameters": {
+										"input": "stop-ignoring"
+									}
+								},
+								{
+									"id": "reset-eventvar",
+									"objectClass": "System",
+									"sid": 113906915904350,
+									"parameters": {
+										"variable": "Energia"
+									}
+								},
+								{
+									"id": "reset-eventvar",
+									"objectClass": "System",
+									"sid": 198186046272663,
+									"parameters": {
+										"variable": "Vivo"
+									}
+								},
+								{
+									"id": "restart-layout",
+									"objectClass": "System",
+									"sid": 661704326016817
+								}
+							],
+							"sid": 903569698619639
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 150693113043593,
+									"parameters": {
+										"first-value": "Vidas",
+										"comparison": 3,
+										"second-value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-x",
+									"objectClass": "Tumulo",
+									"sid": 509641133866551,
+									"parameters": {
+										"x": "Capivara.X"
+									}
+								},
+								{
+									"id": "set-y",
+									"objectClass": "Tumulo",
+									"sid": 294026825836790,
+									"parameters": {
+										"y": "Capivara.Y"
+									}
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "Tumulo",
+									"sid": 603000453772043,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "GameOver",
+									"sid": 431261758913644,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-y",
+									"objectClass": "GameOver",
+									"sid": 342558765126508,
+									"parameters": {
+										"y": "239"
+									}
+								},
+								{
+									"id": "set-effect-enabled",
+									"objectClass": "FundoParqueAquatico",
+									"sid": 358401083122312,
+									"parameters": {
+										"mode": "enable",
+										"effect": "\"DesfoqueRadial\""
+									}
+								}
+							],
+							"sid": 928910196251108
+						}
+					]
+				},
+				{
+					"functionName": "preview_fase",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-enabled",
+							"objectClass": "CAM",
+							"sid": 490589071288947,
+							"behaviorType": "CentrarEm",
+							"parameters": {
+								"state": "disabled"
+							}
+						},
+						{
+							"id": "set-enabled",
+							"objectClass": "Capivara",
+							"sid": 441536925538127,
+							"behaviorType": "CentrarEm",
+							"parameters": {
+								"state": "disabled"
+							}
+						},
+						{
+							"id": "set-position",
+							"objectClass": "CAM",
+							"sid": 533313001661313,
+							"parameters": {
+								"x": "Capivara.X",
+								"y": "Capivara.Y"
+							}
+						},
+						{
+							"id": "set-enabled",
+							"objectClass": "CAM",
+							"sid": 756058136657780,
+							"behaviorType": "CentrarEm",
+							"parameters": {
+								"state": "enabled"
+							}
+						},
+						{
+							"id": "move-to-object",
+							"objectClass": "CAM",
+							"sid": 113273050001267,
+							"behaviorType": "MoverPara",
+							"parameters": {
+								"object": "Portal",
+								"image-point": "0",
+								"mode": "add-waypoint"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 931313705545306,
+							"parameters": {
+								"seconds": "7"
+							}
+						},
+						{
+							"id": "move-to-object",
+							"objectClass": "CAM",
+							"sid": 368270391682047,
+							"behaviorType": "MoverPara",
+							"parameters": {
+								"object": "Capivara",
+								"image-point": "0",
+								"mode": "direct"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 810241890979707,
+							"parameters": {
+								"seconds": "5"
+							}
+						},
+						{
+							"id": "set-enabled",
+							"objectClass": "CAM",
+							"sid": 559177079007597,
+							"behaviorType": "CentrarEm",
+							"parameters": {
+								"state": "disabled"
+							}
+						},
+						{
+							"id": "set-enabled",
+							"objectClass": "Capivara",
+							"sid": 855771283026499,
+							"behaviorType": "CentrarEm",
+							"parameters": {
+								"state": "enabled"
+							}
+						}
+					],
+					"sid": 257372122307626
+				},
+				{
+					"functionName": "joga_Shuriken",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "ataque_angulo",
+							"type": "number",
+							"initialValue": "-15",
+							"comment": "",
+							"sid": 323862712420950
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 887222202092379,
+							"parameters": {
+								"variable": "Shurikens",
+								"comparison": 4,
+								"value": "0"
+							}
+						},
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 588338460409586,
+							"parameters": {
+								"variable": "Vivo"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 904802982639730,
+							"parameters": {
+								"variable": "Capivara_anima",
+								"value": "\"atacando\""
+							}
+						},
+						{
+							"id": "set-animation",
+							"objectClass": "Capivara",
+							"sid": 568104759245642,
+							"parameters": {
+								"animation": "\"atacando\"",
+								"from": "beginning"
+							}
+						},
+						{
+							"id": "spawn-another-object",
+							"objectClass": "Capivara",
+							"sid": 541341675945532,
+							"parameters": {
+								"object": "Shuriken",
+								"layer": "1",
+								"image-point": "1",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-angle-of-motion",
+							"objectClass": "Shuriken",
+							"sid": 500017620583720,
+							"behaviorType": "Projétil",
+							"parameters": {
+								"angle": "ataque_angulo+Capivara.Angle"
+							}
+						},
+						{
+							"type": "script",
+							"script": "runtime.globalVars.Shurikens = myShurikens.Sub();"
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 101518932483793,
+							"parameters": {
+								"seconds": ".5"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 444370774746514,
+							"parameters": {
+								"variable": "Capivara_anima",
+								"value": "\"parado\""
+							}
+						}
+					],
+					"sid": 623155054622124
+				},
+				{
+					"functionName": "atualiza_energia",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "valor_energia",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"sid": 665528131440866
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 685271802424030,
+							"parameters": {
+								"variable": "Energia",
+								"value": "valor_energia"
+							}
+						},
+						{
+							"id": "set-height",
+							"objectClass": "barra_energia",
+							"sid": 167742722614988,
+							"parameters": {
+								"height": "Energia/10"
+							}
+						}
+					],
+					"sid": 661286758364278
+				}
+			],
+			"sid": 272390613638851
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Angulo Personagem",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-start-of-layout",
+							"objectClass": "System",
+							"sid": 846951399401580
+						}
+					],
+					"actions": [
+						{
+							"id": "pin-to-object-properties",
+							"objectClass": "sensor_dir",
+							"sid": 382201633714973,
+							"behaviorType": "Fixar",
+							"parameters": {
+								"pin-to": "Capivara",
+								"x": true,
+								"y": true,
+								"angle": true,
+								"width-type": "no",
+								"height-type": "no",
+								"z": false
+							}
+						},
+						{
+							"id": "pin-to-object-properties",
+							"objectClass": "sensor_esq",
+							"sid": 633292359193151,
+							"behaviorType": "Fixar",
+							"parameters": {
+								"pin-to": "Capivara",
+								"x": true,
+								"y": true,
+								"angle": true,
+								"width-type": "no",
+								"height-type": "no",
+								"z": false
+							}
+						}
+					],
+					"sid": 634439406420709
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "sensor_dir",
+							"sid": 337053341028633,
+							"parameters": {
+								"object": "rampa"
+							}
+						},
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "sensor_dir",
+							"sid": 252638154434783,
+							"parameters": {
+								"object": "base_solido"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-angle",
+							"objectClass": "Capivara",
+							"sid": 320490924525927,
+							"parameters": {
+								"angle": "Capivara.Angle+5"
+							}
+						}
+					],
+					"sid": 580843070959163,
+					"isOrBlock": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "sensor_esq",
+							"sid": 843917573378464,
+							"parameters": {
+								"object": "rampa"
+							}
+						},
+						{
+							"id": "is-overlapping-another-object",
+							"objectClass": "sensor_esq",
+							"sid": 424732420701531,
+							"parameters": {
+								"object": "base_solido"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-angle",
+							"objectClass": "Capivara",
+							"sid": 653941889814246,
+							"parameters": {
+								"angle": "Capivara.Angle-5"
+							}
+						}
+					],
+					"sid": 771321248353703,
+					"isOrBlock": true
+				}
+			],
+			"sid": 696717744793498
+		}
+	],
+	"sid": 927949411170091
+}
